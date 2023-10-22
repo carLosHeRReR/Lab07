@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace data
 {
-    internal class Dcustomer
+    public class Dcustomer
     {
-        private static string connectionString = "Data Source=LAPTOP-54SNKJH2\\SQLEXPRESS;Initial Catalog=FacturaDB;Integrated Security=true";
+        public static string connectionString = "Data Source=LAPTOP-54SNKJH2\\SQLEXPRESS;Initial Catalog=FacturaDB;Integrated Security=true";
 
-        private static List<Cliente> ListarClientes(string ciudad, string region)
+        public static List<Cliente> ListarClientes()
         {
             List<Cliente> clientes = new List<Cliente>();
 
@@ -37,11 +37,11 @@ namespace data
                                 // Leer los datos de cada fila
                                 clientes.Add(new Cliente
                                 {
-                                    Customer_ID = int.Parse(reader["IdCliente"].ToString()),
-                                    Name = reader["NombreContacto"].ToString(),
-                                    Address = reader["Ciudad"].ToString(),
-                                    Phone = reader["Pais"].ToString(),
-                                    Active = bool.Parse(reader["active"].ToString())
+                                    CustomerID = (int)reader["Customer_id"],
+                                    Name = reader["name"].ToString(),
+                                    Address = reader["address"].ToString(),
+                                    Phone = reader["phone"].ToString(),
+                                    Active = (bool)reader["active"],
                                 });
 
                             }

@@ -8,7 +8,7 @@ namespace entity
 {
     public class Cliente
     {
-        public int Customer_ID { get; set; }
+        public int CustomerID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
