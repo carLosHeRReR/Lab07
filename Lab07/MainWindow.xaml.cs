@@ -1,21 +1,7 @@
-﻿using data;
-using entity;
+﻿using entity;
 using data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 
 namespace Lab07
 {
@@ -27,10 +13,43 @@ namespace Lab07
         public MainWindow()
         {
             InitializeComponent();
-            List<Cliente> clients = Dcustomer.ListarClientes();
-
-
-            dgSimple.ItemsSource = clients;
         }
-    }
+
+        private void btnListar_Click(object sender, RoutedEventArgs e)
+        {
+            LoadClients();
+        }
+
+        private void btnInsertar_Click(object sender, RoutedEventArgs e)
+        {
+            InsertarClienteForm insertForm = new InsertarClienteForm();
+            insertForm.ShowDialog();
+            
+            // Opcionalmente, puedes recargar la lista de clientes después de cerrar el formulario de inserción:
+            LoadClients();
+        }
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+            ModificarClienteForm modificarForm = new ModificarClienteForm();
+            modificarForm.ShowDialog();
+
+            // Opcionalmente, puedes recargar la lista de clientes después de cerrar el formulario de modificación:
+            LoadClients();
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            EliminarClienteForm eliminarForm = new EliminarClienteForm();
+            eliminarForm.ShowDialog();
+
+            // Opcionalmente, puedes recargar la lista de clientes después de cerrar el formulario de eliminación:
+            LoadClients();
+        }
+
+
+        private void LoadClients()
+        {
+            dgSimple.ItemsSource = Dcustomer.ListarClientes();
+        }
+    } 
 }
