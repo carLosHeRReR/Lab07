@@ -8,20 +8,19 @@ namespace bussiness
 {
     public class Bcustomer
     {
-        public Cliente BuscarPorNombre(string name)
+        public List<Cliente> ListarCliente()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            return clientes;
+        }
+        public List<Cliente> BuscarPorNombre(string name)
         {
             List<Cliente> customers = new List<Cliente>();
             customers = Dcustomer.ListarClientes();
 
-            foreach (var cust in customers)
-            {
-                if (cust.Name.Equals(name))
-                {
-                    return cust;
-                }
-            }
+            var resul= customers.Where(x=> x.Name.Contains( name)).ToList();
 
-            return null;
+            return resul;
         }
     }
 }
